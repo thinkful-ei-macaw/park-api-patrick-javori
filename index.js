@@ -12,19 +12,14 @@ function formatQueryParams(params) {
 }
 
 function displayResults(responseJson) {
-  // if there are previous results, remove them
   console.log(responseJson);
   $("#results-list").empty();
-  // iterate through the items array
-  for (let i = 0; i < responseJson.items.length; i++) {
-    // for each video object in the items
-    //array, add a list item to the results
-    //list with the video title, description,
-    //and thumbnail
+  for (let i = 0; i < responseJson.data.length; i++) {
     $("#results-list").append(
-      `<li><h3>${responseJson.items[i].snippet.title}</h3>
-      <p>${responseJson.items[i].snippet.description}</p>
-      <img src='${responseJson.items[i].snippet.thumbnails.default.url}'>
+      `<li><h3>${responseJson.data[i].fullName}</h3><br>
+      <h4>${responseJson.data[i].states}</h4>
+      <p>${responseJson.data[i].description}</p><br>
+      <a href="${responseJson.data[i].url}">Click Here to Visit Website</p>
       </li>`
     );
   }
@@ -60,8 +55,8 @@ function watchForm() {
   $("form").submit(event => {
     event.preventDefault();
     const searchTerm = $("#js-search-term").val();
-    const maxResults = $("#js-max-results").val();
-    getNationalParks(searchTerm, maxResults);
+    const limit = $("#js-max-results").val();
+    getNationalParks(searchTerm, limit);
   });
 }
 

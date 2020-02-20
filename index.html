@@ -12,14 +12,20 @@
 
       <form id="js-form">
         <label for="search-term">Search term</label>
-        <input type="text" name="search-term" id="js-search-term" required />
+        <input
+          type="text"
+          name="search-term"
+          id="js-search-term"
+          required
+        /><br />
 
         <label for="max-results">Maximum results to return</label>
         <input
-          type="number"
+          type="input"
           name="max-results"
           id="js-max-results"
           value="10"
+          placeholder="Choose a # up to 50"
         />
 
         <input type="submit" value="Go!" />
